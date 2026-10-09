@@ -1,0 +1,44 @@
+NOVAENGINE SOURCE RECIPROCAL AND CONTRIBUTION LICENSE
+Version 1.0, October 2026
+
+Copyright (c) 2026 Raúl Salas Sahuquillo <raulsalassahuquillo.dev@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to inspect,
+study, execute, and contribute to the Software, subject to the following
+mandatory terms and conditions:
+
+1. RECIPROCAL UPSTREAM CONTRIBUTION REQUIREMENT
+Any modifications, enhancements, derivative works, patches, refactorings, or
+extensions of the Software made by any individual or entity must be contributed
+back to this official upstream repository (NovaEngine). 
+
+You may not retain private modifications or create proprietary, internal, or
+divergent forks for private or separate use without submitting the entirety of
+such modifications back to the upstream repository under this same license.
+
+2. COMMERCIAL AND UNRESTRICTED USE AUTHORIZATION
+Any usage of the Software, whether modified or unmodified, for independent,
+commercial, proprietary, uncredited, or unrestricted distribution outside the
+terms of Section 1 requires prior written consent and an explicit licensing
+agreement granted directly by the original creator:
+
+    Raúl Salas Sahuquillo
+    Email: raulsalassahuquillo.dev@gmail.com
+
+Without prior written authorization, no person or organization may incorporate
+the Software into a proprietary product, commercial service, closed-source
+distribution, or standalone monetization pipeline.
+
+3. PRESERVATION OF NOTICES
+All copies, substantial portions, or upstream distributions of the Software
+must retain the copyright notice above and this full license text.
+
+4. DISCLAIMER OF WARRANTY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, FINANCIAL ACCURACY, AND NONINFRINGEMENT. IN NO
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES,
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.

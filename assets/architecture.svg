@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="100%" height="440">
+  <defs>
+    <style>
+      @keyframes signalTravel {
+        0% { stroke-dashoffset: 48; }
+        100% { stroke-dashoffset: 0; }
+      }
+      .connector-pulse {
+        stroke-dasharray: 6 10;
+        animation: signalTravel 1.6s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Clean dark background -->
+  <rect width="1000" height="440" fill="#000000" rx="12"/>
+
+  <!-- Minimal Header -->
+  <g transform="translate(48, 44)">
+    <circle cx="6" cy="6" r="4" fill="#38bdf8"/>
+    <text x="22" y="10" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="2">SYSTEM TOPOLOGY</text>
+    <text x="22" y="28" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="400">Decoupled data ingestion, deterministic execution runtime, and persistence bindings.</text>
+  </g>
+
+  <!-- Flow connecting horizontal lines between the 3 columns -->
+  <g transform="translate(0, 240)">
+    <!-- Column 1 to Column 2 -->
+    <line x1="310" y1="0" x2="370" y2="0" stroke="#1e293b" stroke-width="1.5"/>
+    <line x1="310" y1="0" x2="370" y2="0" stroke="#38bdf8" stroke-width="1.5" class="connector-pulse"/>
+
+    <!-- Column 2 to Column 3 -->
+    <line x1="650" y1="0" x2="710" y2="0" stroke="#1e293b" stroke-width="1.5"/>
+    <line x1="650" y1="0" x2="710" y2="0" stroke="#38bdf8" stroke-width="1.5" class="connector-pulse"/>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- COLUMN 1: INGESTION                                          -->
+  <!-- ============================================================ -->
+  <g transform="translate(48, 95)">
+    <!-- Column card -->
+    <rect x="0" y="0" width="262" height="300" rx="8" fill="#030712" stroke="#1e293b" stroke-width="1"/>
+    
+    <!-- Title -->
+    <text x="20" y="32" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.5">01 · MARKET INGESTION</text>
+    <line x1="20" y1="46" x2="242" y2="46" stroke="#0f172a" stroke-width="1"/>
+
+    <!-- Section A: Yahoo Finance -->
+    <g transform="translate(20, 68)">
+      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Yahoo Finance Connector</text>
+      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Equities, ETFs &amp; indices</text>
+      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">10s in-memory TTL caching</text>
+    </g>
+
+    <!-- Section B: CoinGecko -->
+    <g transform="translate(20, 142)">
+      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">CoinGecko Connector</text>
+      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Cryptocurrency spot rates</text>
+      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">Sparklines &amp; capitalization</text>
+    </g>
+
+    <!-- Section C: FX Harmonization -->
+    <g transform="translate(20, 216)">
+      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">FX Rate Normalization</text>
+      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Canonical EUR base anchor</text>
+      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">10-currency conversion matrix</text>
+    </g>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- COLUMN 2: CORE RUNTIME                                       -->
+  <!-- ============================================================ -->
+  <g transform="translate(370, 95)">
+    <!-- Column card (accented with subtle blue border) -->
+    <rect x="0" y="0" width="280" height="300" rx="8" fill="#040916" stroke="#0284c7" stroke-width="1.2"/>
+    
+    <!-- Title -->
+    <text x="20" y="32" fill="#7dd3fc" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.5">02 · CORE RUNTIME</text>
+    <line x1="20" y1="46" x2="260" y2="46" stroke="#0c2340" stroke-width="1"/>
+
+    <!-- Section A: Order Execution -->
+    <g transform="translate(20, 68)">
+      <text x="0" y="0" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Order Execution Pipeline</text>
+      <text x="0" y="18" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Market order settlement &amp; fills</text>
+      <text x="0" y="34" fill="#0284c7" font-family="monospace" font-size="10">Solvency check &amp; zero-deficit gate</text>
+    </g>
+
+    <!-- Section B: Fiscal Tax Auditor -->
+    <g transform="translate(20, 142)">
+      <text x="0" y="0" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Fiscal Tax Engine (11+ Regimes)</text>
+      <text x="0" y="18" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Spain IRPF tramos, Tobin, SDRT, TTF</text>
+      <text x="0" y="34" fill="#0284c7" font-family="monospace" font-size="10">Broker floors &amp; capital gains tax</text>
+    </g>
+
+    <!-- Section C: Position State -->
+    <g transform="translate(20, 216)">
+      <text x="0" y="0" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Portfolio &amp; Ledger State</text>
+      <text x="0" y="18" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Weighted average acquisition cost</text>
+      <text x="0" y="34" fill="#0284c7" font-family="monospace" font-size="10">Cash reserves &amp; immutable receipts</text>
+    </g>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- COLUMN 3: OUTPUT & STORAGE                                   -->
+  <!-- ============================================================ -->
+  <g transform="translate(710, 95)">
+    <!-- Column card -->
+    <rect x="0" y="0" width="242" height="300" rx="8" fill="#030712" stroke="#1e293b" stroke-width="1"/>
+    
+    <!-- Title -->
+    <text x="20" y="32" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.5">03 · PERSISTENCE &amp; API</text>
+    <line x1="20" y1="46" x2="222" y2="46" stroke="#0f172a" stroke-width="1"/>
+
+    <!-- Section A: Storage Providers -->
+    <g transform="translate(20, 68)">
+      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Storage Providers</text>
+      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Atomic JSON (swap-and-rename)</text>
+      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">SQLite ACID relational ledger</text>
+    </g>
+
+    <!-- Section B: Quantitative Analytics -->
+    <g transform="translate(20, 142)">
+      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Quant Analytics</text>
+      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Sharpe ratio &amp; peak drawdown</text>
+      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">Win/loss &amp; profit factor audit</text>
+    </g>
+
+    <!-- Section C: Client Bindings -->
+    <g transform="translate(20, 216)">
+      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Client Bindings</text>
+      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Python CLI &amp; Package</text>
+      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">Headless Dart Core Library</text>
+    </g>
+  </g>
+</svg>

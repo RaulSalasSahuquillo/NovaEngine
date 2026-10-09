@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 280" width="100%" height="280">
+  <defs>
+    <!-- Refined monochromatic and electric sapphire gradients -->
+    <linearGradient id="emblemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7dd3fc" />
+      <stop offset="35%" stop-color="#38bdf8" />
+      <stop offset="75%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+
+    <linearGradient id="starSpine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="45%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="55%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="starHoriz" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="45%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="55%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </linearGradient>
+
+    <radialGradient id="subtleAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.22" />
+      <stop offset="70%" stop-color="#0284c7" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0" />
+    </radialGradient>
+
+    <style>
+      @keyframes gentlePulse {
+        0%, 100% { opacity: 0.85; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.04); }
+      }
+      @keyframes starRotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .aura-pulse {
+        transform-origin: 165px 140px;
+        animation: gentlePulse 6s ease-in-out infinite;
+      }
+      .ring-rotate {
+        transform-origin: 165px 140px;
+        animation: starRotate 90s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Clean dark background -->
+  <rect width="1100" height="280" fill="#000000" rx="12"/>
+
+  <!-- Subtle ambient halo behind emblem -->
+  <circle cx="165" cy="140" r="130" fill="url(#subtleAura)" class="aura-pulse"/>
+
+  <!-- ============================================================ -->
+  <!-- NOVAENGINE VECTOR EMBLEM (ACCURATE, MINIMALIST & SHARP)      -->
+  <!-- ============================================================ -->
+  <g transform="translate(15, 0)">
+    <!-- 1. Compass Circle -->
+    <g class="ring-rotate">
+      <circle cx="165" cy="140" r="72" fill="none" stroke="#0284c7" stroke-width="1.2" stroke-opacity="0.55" stroke-dasharray="88 12 60 14"/>
+    </g>
+
+    <!-- 2. Radiant Star Flare -->
+    <!-- Diagonal rays -->
+    <line x1="120" y1="95" x2="210" y2="185" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.45"/>
+    <line x1="120" y1="185" x2="210" y2="95" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.45"/>
+
+    <!-- Vertical and Horizontal needle flares -->
+    <path d="M 165 40 Q 163.5 140 165 240 Q 166.5 140 165 40 Z" fill="url(#starSpine)"/>
+    <path d="M 65 140 Q 165 138.5 265 140 Q 165 141.5 65 140 Z" fill="url(#starHoriz)"/>
+
+    <!-- Star flare core -->
+    <polygon points="165,108 173,140 165,172 157,140" fill="#38bdf8" opacity="0.85"/>
+    <polygon points="133,140 165,148 197,140 165,132" fill="#38bdf8" opacity="0.85"/>
+    <circle cx="165" cy="140" r="4" fill="#ffffff"/>
+
+    <!-- 3. Stylized 'N' Monogram with Ascending Arrow & Bar Chart -->
+    <!-- Left vertical stem -->
+    <polygon points="85,152 110,175 110,248 85,268" fill="url(#emblemGrad)"/>
+    <!-- Specular highlight on left stem edge -->
+    <line x1="85" y1="152" x2="85" y2="268" stroke="#bae6fd" stroke-width="1.5" stroke-opacity="0.8"/>
+
+    <!-- Ascending diagonal arrow stroke -->
+    <polygon points="85,152 165,232 254,142 260,148 274,118 244,132 250,138 165,242" fill="url(#emblemGrad)"/>
+    <line x1="87" y1="155" x2="165" y2="233" stroke="#bae6fd" stroke-width="1.2" stroke-opacity="0.75"/>
+    <line x1="165" y1="233" x2="254" y2="142" stroke="#bae6fd" stroke-width="1.2" stroke-opacity="0.75"/>
+
+    <!-- Arrowhead -->
+    <polygon points="275,116 242,132 252,142" fill="#7dd3fc"/>
+    <polygon points="275,116 252,142 262,152" fill="#0284c7"/>
+
+    <!-- 3 Ascending Bar Chart Columns -->
+    <rect x="184" y="222" width="16" height="46" fill="url(#emblemGrad)" rx="1"/>
+    <line x1="184" y1="222" x2="200" y2="222" stroke="#bae6fd" stroke-width="1.5"/>
+
+    <rect x="208" y="196" width="16" height="72" fill="url(#emblemGrad)" rx="1"/>
+    <line x1="208" y1="196" x2="224" y2="196" stroke="#bae6fd" stroke-width="1.5"/>
+
+    <rect x="232" y="162" width="16" height="106" fill="url(#emblemGrad)" rx="1"/>
+    <line x1="232" y1="162" x2="248" y2="162" stroke="#bae6fd" stroke-width="1.5"/>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- REFINED, MINIMALIST TYPOGRAPHY                               -->
+  <!-- ============================================================ -->
+  <g transform="translate(340, 75)">
+    <!-- Overline -->
+    <text x="0" y="20" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" letter-spacing="2.5">HEADLESS CORE RUNTIME</text>
+
+    <!-- Main Title -->
+    <text x="0" y="68" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="800" letter-spacing="1">NOVA ENGINE</text>
+
+    <!-- Subtitle -->
+    <text x="0" y="102" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="400" letter-spacing="0.2">Quantitative simulation, market feed pipelines and multi-jurisdiction fiscal auditing.</text>
+
+    <!-- Subtle divider line -->
+    <line x1="0" y1="126" x2="710" y2="126" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Clean metadata footer with generous letter-spacing -->
+    <text x="0" y="152" fill="#64748b" font-family="monospace" font-size="11" letter-spacing="1">
+      <tspan fill="#38bdf8">PYTHON &amp; DART</tspan>  ·  11+ TAX JURISDICTIONS  ·  LIVE YAHOO &amp; COINGECKO  ·  ZERO GUI
+    </text>
+  </g>
+</svg>
