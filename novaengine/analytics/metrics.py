@@ -1,8 +1,12 @@
 """Quantitative analytics, risk metrics, and performance evaluation."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
-from typing import Optional
-from novaengine.core.portfolio import PortfolioState
+from typing import TYPE_CHECKING, Optional
+
+if TYPE_CHECKING:
+    from novaengine.core.portfolio import PortfolioState
 
 
 @dataclass

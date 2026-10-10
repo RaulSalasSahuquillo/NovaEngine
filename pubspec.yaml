@@ -1,5 +1,5 @@
 name: novaengine
-description: "Headless quantitative investment engine, multi-jurisdiction tax auditor, and market feed pipeline."
+description: "Headless quantitative investment engine, multi-jurisdiction fiscal auditor, and market feed pipeline."
 version: 1.0.0
 publish_to: 'none'
 
@@ -10,6 +10,7 @@ dependencies:
   http: ^1.2.2
   intl: ^0.20.2
   uuid: ^4.5.1
+  args: ^2.5.0
 
 dev_dependencies:
   test: ^1.24.0

@@ -98,23 +98,18 @@ NovaEngine implements official statutory fiscal calculations across major intern
 
 ## Installation
 
-### Prerequisites
-- Python 3.9 or higher
-- Optional: Dart SDK 3.0 or higher (for Dart client bindings)
+### Dart Runtime
+```bash
+git clone https://github.com/raulsalas/NovaEngine.git
+cd NovaEngine
+dart pub get
+```
 
-### Setup
-
-Clone the repository and install dependencies:
-
+### Python Runtime
 ```bash
 git clone https://github.com/raulsalas/NovaEngine.git
 cd NovaEngine
 pip install -r requirements.txt
-```
-
-To install NovaEngine as an editable package:
-
-```bash
 pip install -e .
 ```
 
@@ -124,10 +119,37 @@ pip install -e .
 
 ### Command-Line Interface
 
-NovaEngine includes a complete headless CLI for querying quotes, executing trades, and reviewing portfolio statements:
+NovaEngine ships with identical command-line tooling implemented natively in both Dart and Python.
+
+#### Dart CLI Executable
 
 ```bash
-# Query a stock quote
+# Query a stock or ETF quote
+dart run bin/novaengine.dart quote AAPL
+
+# Query a cryptocurrency quote
+dart run bin/novaengine.dart crypto bitcoin
+
+# Execute a stock purchase in Spain (evaluating Tobin tax and broker fees)
+dart run bin/novaengine.dart buy AAPL 10 --price 228.45 --country ES
+
+# Execute a cryptocurrency purchase
+dart run bin/novaengine.dart buy bitcoin 0.5 --crypto --country ES
+
+# Execute a sale with progressive capital gains tax withholding
+dart run bin/novaengine.dart sell AAPL 5 --price 250.00 --country ES
+
+# Print the portfolio statement and balance breakdown
+dart run bin/novaengine.dart statement
+
+# View statutory tax parameters across supported jurisdictions
+dart run bin/novaengine.dart taxes
+```
+
+#### Python CLI Executable
+
+```bash
+# Query a stock or ETF quote
 python -m novaengine.cli quote AAPL
 
 # Query a cryptocurrency quote
@@ -149,13 +171,65 @@ python -m novaengine.cli statement
 python -m novaengine.cli taxes
 ```
 
-### Python Programmatic API
+---
+
+### Programmatic Core APIs
+
+Both implementations share identical financial mechanics, accounting rules, and tax equations.
+
+#### Dart Core API
+
+```dart
+import 'package:novaengine/novaengine.dart';
+
+void main() async {
+  // Initialize the headless simulation engine
+  final engine = NovaSimulationEngine(
+    cashBalance: 50000.0,
+    userCountry: 'ES',
+  );
+
+  // Execute equity purchase with Spanish Tobin tax (Ley 5/2020) and broker fees
+  final buyReceipt = await engine.buy(
+    assetId: 'AAPL',
+    assetName: 'Apple Inc.',
+    assetType: 'stock',
+    quantity: 10.0,
+    pricePerUnit: 228.45,
+  );
+
+  print('Buy Receipt ID: ${buyReceipt?.id}');
+  print('Gross Cost: €${buyReceipt?.grossAmount.toStringAsFixed(2)}');
+  print('Broker Commission: €${buyReceipt?.brokerCommission.toStringAsFixed(2)}');
+  print('Tobin Tax: €${buyReceipt?.tobinTax.toStringAsFixed(2)}');
+  print('Remaining Cash: €${engine.cashBalance.toStringAsFixed(2)}');
+
+  // Liquidate a portion of the position at higher market valuation
+  final sellReceipt = await engine.sell(
+    assetId: 'AAPL',
+    quantity: 5.0,
+    pricePerUnit: 260.00,
+  );
+
+  print('Sell Receipt ID: ${sellReceipt?.id}');
+  print('Realized Capital Gain: €${sellReceipt?.capitalGain.toStringAsFixed(2)}');
+  print('Capital Gains Tax Withheld: €${sellReceipt?.taxWithheld.toStringAsFixed(2)}');
+  print('Net Proceeds Credited: €${sellReceipt?.netProceeds.toStringAsFixed(2)}');
+
+  // Generate complete valuation statement
+  final statement = engine.getStatement();
+  print('Current Net Worth: €${statement['totalNetWorth']}');
+  print('Cash Reserve: €${statement['cashBalance']}');
+}
+```
+
+#### Python Core API
 
 ```python
 from novaengine import NovaEngine, AssetType
 from novaengine.storage import JsonStorageProvider
 
-# Initialize the headless engine with local atomic persistence
+# Initialize the headless engine with atomic persistence
 storage = JsonStorageProvider("portfolio.json")
 engine = NovaEngine(
     country_code="ES",
@@ -191,40 +265,25 @@ print(f"Current Net Worth: €{statement['total_net_worth']:,.2f}")
 print(f"Total Return: {statement['total_profit_loss_pct']:+.2f}%")
 ```
 
-### Dart Headless Library
-
-For Flutter applications or standalone Dart tools, the headless library is located in `novaengine_dart/`:
-
-```dart
-import 'package:novaengine/novaengine.dart';
-
-void main() async {
-  final engine = NovaSimulationEngine(
-    cashBalance: 50000.0,
-    userCountry: 'ES',
-  );
-
-  // Buy shares with Spanish Tobin tax calculations
-  final tx = await engine.buy(
-    assetId: 'AAPL',
-    assetName: 'Apple Inc.',
-    assetType: 'stock',
-    quantity: 10.0,
-    pricePerUnit: 228.45,
-  );
-
-  print('Executed Transaction: ${tx?.id}');
-  print('Remaining Cash: €${engine.cashBalance}');
-}
-```
-
 ---
 
 ## Testing
 
-Run the full automated test suite covering tax schedules, currency matrices, position accounting, and order execution:
+Both runtimes feature comprehensive unit test suites covering statutory fiscal schedules, foreign exchange harmonization, solvency safeguards, and transaction order lifecycles:
+
+### Dart Test Suite
 
 ```bash
+dart test
+```
+
+### Python Test Suite
+
+```bash
+# Standard library test runner
+python3 -m unittest discover tests
+
+# Or with pytest
 pytest
 ```
 

@@ -6,7 +6,32 @@ NovaEngine without graphical dependencies.
 
 import argparse
 import sys
-from tabulate import tabulate
+
+try:
+    from tabulate import tabulate
+except ImportError:
+    def tabulate(rows, headers=None, tablefmt=None):
+        """Fallback table formatter when tabulate is not installed."""
+        all_rows = []
+        if headers:
+            all_rows.append([str(h) for h in headers])
+        for r in rows:
+            all_rows.append([str(c) for c in r])
+        if not all_rows:
+            return ""
+        col_widths = [max(len(row[i]) for row in all_rows) for i in range(len(all_rows[0]))]
+        lines = []
+        if headers:
+            header_line = " | ".join(h.ljust(col_widths[i]) for i, h in enumerate(all_rows[0]))
+            sep_line = "-+-".join("-" * col_widths[i] for i in range(len(col_widths)))
+            lines.append(header_line)
+            lines.append(sep_line)
+            data_rows = all_rows[1:]
+        else:
+            data_rows = all_rows
+        for row in data_rows:
+            lines.append(" | ".join(cell.ljust(col_widths[i]) for i, cell in enumerate(row)))
+        return "\n".join(lines)
 
 from novaengine.core.engine import NovaEngine
 from novaengine.core.orders import AssetType, OrderStatus

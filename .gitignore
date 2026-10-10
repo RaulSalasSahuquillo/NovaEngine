@@ -10,7 +10,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+build/lib/
 lib64/
 parts/
 sdist/
@@ -40,6 +40,7 @@ htmlcov/
 *.sqlite3
 *.db
 portfolio_state.json
+example_portfolio.json
 local_cache/
 
 # IDE and editors
