@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 30" width="100%" height="30">
+  <defs>
+    <linearGradient id="divBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </linearGradient>
+
+    <radialGradient id="starFlareGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0" />
+    </radialGradient>
+
+    <style>
+      @keyframes beamTravel {
+        0% { transform: translateX(40px); opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translateX(1020px); opacity: 0; }
+      }
+      .anim-beam {
+        animation: beamTravel 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Obsidian Capsule Background -->
+  <rect width="1200" height="30" fill="#000000" rx="15" />
+  <rect width="1198" height="28" x="1" y="1" fill="none" stroke="#1e293b" stroke-width="1" rx="14" stroke-opacity="0.7" />
+
+  <!-- Base Conduit Hairline -->
+  <line x1="60" y1="15" x2="1140" y2="15" stroke="#1e293b" stroke-width="1" />
+
+  <!-- Animated Traveling Photon -->
+  <line x1="0" y1="15" x2="140" y2="15" stroke="url(#divBeamGrad)" stroke-width="2" class="anim-beam" />
+
+  <!-- Center Nova Star Flare -->
+  <circle cx="600" cy="15" r="7" fill="url(#starFlareGrad)">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite" />
+  </circle>
+  <polygon points="600,7 602,15 600,23 598,15" fill="#ffffff">
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite" />
+  </polygon>
+  <polygon points="592,15 600,17 608,15 600,13" fill="#ffffff">
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite" />
+  </polygon>
+  <circle cx="600" cy="15" r="1.5" fill="#ffffff" />
+</svg>

@@ -3,24 +3,26 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Language-Python%203.9%2B-0284c7?style=flat-square" alt="Python Version" />
-  <img src="https://img.shields.io/badge/Headless-Dart%203.0%2B-0284c7?style=flat-square" alt="Dart Version" />
-  <img src="https://img.shields.io/badge/Architecture-Decoupled%20Core-0369a1?style=flat-square" alt="Architecture" />
-  <img src="https://img.shields.io/badge/Fiscal%20Regimes-11%2B%20Jurisdictions-0284c7?style=flat-square" alt="Tax Regimes" />
-  <img src="https://img.shields.io/badge/License-Reciprocal%20Upstream-0369a1?style=flat-square" alt="License" />
+  <img src="assets/telemetry.svg" alt="NovaEngine Telemetry" width="100%" />
 </p>
 
----
+<p align="center">
+  <img src="assets/divider.svg" alt="Section Divider" width="100%" />
+</p>
 
 ## Overview
 
 NovaEngine is an open-core, headless simulation runtime for quantitative trading, market data ingestion, portfolio accounting, and multi-jurisdiction fiscal auditing.
 
-In the same manner that Chromium serves as the decoupled, GUI-independent engine underpinning modern web browsers, NovaEngine provides the underlying financial mechanics and execution logic for trading simulators, backtesters, and fintech frontends (including NovaTrade) without coupling to any graphical user interface framework.
+This repository is directly based on the core mechanics and financial calculation engine of the **NovaTrade** application and its official web deployment at [https://portfolio.raulsalas.com/novatrade-web/](https://portfolio.raulsalas.com/novatrade-web/).
 
-All visual components, widget trees, and proprietary credentials have been eliminated. What remains is a deterministic, high-throughput financial calculation core.
+In the same manner that Chromium serves as the decoupled, GUI-independent engine underpinning modern web browsers, NovaEngine provides the underlying financial mechanics and execution logic for trading simulators, quantitative backtesters, and fintech frontends without coupling to any graphical user interface framework.
 
----
+All visual components, widget trees, and proprietary credentials have been eliminated. What remains is a deterministic, high-throughput financial calculation core implemented natively in both **Dart** and **Python**.
+
+<p align="center">
+  <img src="assets/divider.svg" alt="Section Divider" width="100%" />
+</p>
 
 ## Architectural Topology
 
@@ -37,7 +39,9 @@ NovaEngine isolates market ingestion, currency harmonization, statutory fiscal c
 - **Canonical Currency Harmonization**: All internal portfolio valuations, tax withholdings, and historical acquisition costs are grounded in a canonical EUR base to eliminate foreign exchange drift across multi-asset holdings.
 - **Comprehensive Regulatory Tax Auditing**: Real-world transactions are not frictionless. NovaEngine computes statutory national transaction taxes (Tobin Tax, SDRT, TTF, SEC Section 31 fees), exchange execution canons, brokerage commissions, and progressive capital gains withholdings.
 
----
+<p align="center">
+  <img src="assets/divider.svg" alt="Section Divider" width="100%" />
+</p>
 
 ## Execution Lifecycle
 
@@ -53,7 +57,9 @@ When an order is submitted to NovaEngine, it passes through a multi-stage valida
 4. **Solvency Verification**: Guarantees that sufficient cash reserves are present before committing the purchase, preventing negative balance anomalies.
 5. **Settlement and Ledger Commit**: Updates position quantity, recalculates the weighted average acquisition cost, debits or credits net cash, and generates an immutable UUID audit receipt.
 
----
+<p align="center">
+  <img src="assets/divider.svg" alt="Section Divider" width="100%" />
+</p>
 
 ## Key Subsystems
 
@@ -94,7 +100,9 @@ NovaEngine implements official statutory fiscal calculations across major intern
 - Peak-to-trough maximum drawdown tracking.
 - Cumulative fee and tax friction audit reporting.
 
----
+<p align="center">
+  <img src="assets/divider.svg" alt="Section Divider" width="100%" />
+</p>
 
 ## Installation
 
@@ -113,7 +121,9 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
----
+<p align="center">
+  <img src="assets/divider.svg" alt="Section Divider" width="100%" />
+</p>
 
 ## Quickstart
 
@@ -171,7 +181,9 @@ python -m novaengine.cli statement
 python -m novaengine.cli taxes
 ```
 
----
+<p align="center">
+  <img src="assets/divider.svg" alt="Section Divider" width="100%" />
+</p>
 
 ### Programmatic Core APIs
 
@@ -265,7 +277,9 @@ print(f"Current Net Worth: €{statement['total_net_worth']:,.2f}")
 print(f"Total Return: {statement['total_profit_loss_pct']:+.2f}%")
 ```
 
----
+<p align="center">
+  <img src="assets/divider.svg" alt="Section Divider" width="100%" />
+</p>
 
 ## Testing
 
@@ -287,7 +301,9 @@ python3 -m unittest discover tests
 pytest
 ```
 
----
+<p align="center">
+  <img src="assets/divider.svg" alt="Section Divider" width="100%" />
+</p>
 
 ## License and Terms of Use
 
@@ -304,7 +320,9 @@ Any use of the software for independent, commercial, proprietary, uncredited, or
 
 Review the complete legal text in the [LICENSE](LICENSE) file.
 
----
+<p align="center">
+  <img src="assets/divider.svg" alt="Section Divider" width="100%" />
+</p>
 
 ## Contributing and Security
 

@@ -1,134 +1,196 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="100%" height="440">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="100%" height="480">
   <defs>
+    <!-- Background styling -->
+    <radialGradient id="archGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.10" />
+      <stop offset="60%" stop-color="#0052cc" stop-opacity="0.03" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <pattern id="archDots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#1e293b" opacity="0.45" />
+    </pattern>
+
+    <!-- Linear gradients for conduit lines and packets -->
+    <linearGradient id="conduitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.3" />
+    </linearGradient>
+
+    <!-- Card headers and highlights -->
+    <linearGradient id="cardStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#1e293b" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.3" />
+    </linearGradient>
+
+    <linearGradient id="coreCardStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#0284c7" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0052cc" stop-opacity="0.8" />
+    </linearGradient>
+
     <style>
-      @keyframes signalTravel {
-        0% { stroke-dashoffset: 48; }
+      @keyframes packetMove1 {
+        0% { stroke-dashoffset: 160; }
         100% { stroke-dashoffset: 0; }
       }
-      .connector-pulse {
-        stroke-dasharray: 6 10;
-        animation: signalTravel 1.6s linear infinite;
+      @keyframes beaconBlink {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+      .conduit-flow {
+        stroke-dasharray: 8 16;
+        animation: packetMove1 2s linear infinite;
+      }
+      .beacon-active {
+        animation: beaconBlink 2.5s ease-in-out infinite;
       }
     </style>
   </defs>
 
-  <!-- Clean dark background -->
-  <rect width="1000" height="440" fill="#000000" rx="12"/>
+  <!-- Obsidian Canvas -->
+  <rect width="1200" height="480" fill="#000000" rx="16" />
+  <rect width="1200" height="480" fill="url(#archDots)" rx="16" />
+  <rect width="1200" height="480" fill="url(#archGlow)" rx="16" />
+  <rect width="1198" height="478" x="1" y="1" fill="none" stroke="#1e293b" stroke-width="1" rx="15" stroke-opacity="0.8" />
 
-  <!-- Minimal Header -->
-  <g transform="translate(48, 44)">
-    <circle cx="6" cy="6" r="4" fill="#38bdf8"/>
-    <text x="22" y="10" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="2">SYSTEM TOPOLOGY</text>
-    <text x="22" y="28" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="400">Decoupled data ingestion, deterministic execution runtime, and persistence bindings.</text>
+  <!-- Technical Schematic Header -->
+  <g transform="translate(48, 36)">
+    <circle cx="6" cy="6" r="4" fill="#38bdf8" class="beacon-active" />
+    <text x="20" y="10" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="13" font-weight="700" letter-spacing="2">TOPOLOGICAL ARCHITECTURE</text>
+    <text x="20" y="28" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="11">DECOUPLED EXECUTION RUNTIME // DUAL DART &amp; PYTHON KERNEL</text>
   </g>
 
-  <!-- Flow connecting horizontal lines between the 3 columns -->
-  <g transform="translate(0, 240)">
-    <!-- Column 1 to Column 2 -->
-    <line x1="310" y1="0" x2="370" y2="0" stroke="#1e293b" stroke-width="1.5"/>
-    <line x1="310" y1="0" x2="370" y2="0" stroke="#38bdf8" stroke-width="1.5" class="connector-pulse"/>
-
-    <!-- Column 2 to Column 3 -->
-    <line x1="650" y1="0" x2="710" y2="0" stroke="#1e293b" stroke-width="1.5"/>
-    <line x1="650" y1="0" x2="710" y2="0" stroke="#38bdf8" stroke-width="1.5" class="connector-pulse"/>
+  <!-- Status Chip (Top Right) -->
+  <g transform="translate(980, 36)">
+    <rect x="0" y="-4" width="172" height="24" rx="12" fill="#03182e" stroke="#0284c7" stroke-width="1" stroke-opacity="0.6" />
+    <circle cx="14" cy="8" r="3.5" fill="#38bdf8" class="beacon-active" />
+    <text x="26" y="12" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" letter-spacing="1">HEADLESS ENGINE</text>
   </g>
 
   <!-- ============================================================ -->
-  <!-- COLUMN 1: INGESTION                                          -->
+  <!-- CONDUIT BUS CONNECTIONS (STREAM SIGNAL PATHWAYS)             -->
   <!-- ============================================================ -->
-  <g transform="translate(48, 95)">
-    <!-- Column card -->
-    <rect x="0" y="0" width="262" height="300" rx="8" fill="#030712" stroke="#1e293b" stroke-width="1"/>
+  <g stroke="#1e293b" stroke-width="1.5" fill="none">
+    <!-- Feeds to FX Normalizer -->
+    <path d="M 260 160 H 320 V 210 H 380" />
+    <path d="M 260 270 H 320 V 210 H 380" />
+
+    <!-- FX to Processing Core -->
+    <path d="M 540 210 H 580" />
+
+    <!-- Core to Tax Auditor -->
+    <path d="M 710 300 V 340" />
+
+    <!-- Core to Storage & Interfaces -->
+    <path d="M 840 210 H 900 V 160 H 940" />
+    <path d="M 840 210 H 900 V 270 H 940" />
+  </g>
+
+  <!-- Animated Signal Pulses over Conduits -->
+  <g stroke="#38bdf8" stroke-width="2" fill="none" class="conduit-flow">
+    <path d="M 260 160 H 320 V 210 H 380" />
+    <path d="M 260 270 H 320 V 210 H 380" />
+    <path d="M 540 210 H 580" />
+    <path d="M 710 300 V 340" />
+    <path d="M 840 210 H 900 V 160 H 940" />
+    <path d="M 840 210 H 900 V 270 H 940" />
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- COLUMN 1: MARKET INGESTION SUBSYSTEM (LEFT)                  -->
+  <!-- ============================================================ -->
+  <!-- Node A: Yahoo Finance -->
+  <g transform="translate(48, 120)">
+    <rect width="212" height="80" rx="8" fill="#030712" stroke="url(#cardStroke)" stroke-width="1" />
+    <text x="16" y="26" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">FEED // EQUITIES</text>
+    <text x="16" y="48" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="14" font-weight="600">Yahoo Finance</text>
+    <text x="16" y="66" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">Stocks, ETFs · 10s TTL</text>
+    <circle cx="192" cy="24" r="3" fill="#38bdf8" />
+  </g>
+
+  <!-- Node B: CoinGecko -->
+  <g transform="translate(48, 230)">
+    <rect width="212" height="80" rx="8" fill="#030712" stroke="url(#cardStroke)" stroke-width="1" />
+    <text x="16" y="26" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">FEED // CRYPTO</text>
+    <text x="16" y="48" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="14" font-weight="600">CoinGecko Spot</text>
+    <text x="16" y="66" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">Coins, Market Caps · TTL</text>
+    <circle cx="192" cy="24" r="3" fill="#38bdf8" />
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- COLUMN 2: FX HARMONIZATION NODE                              -->
+  <!-- ============================================================ -->
+  <g transform="translate(380, 160)">
+    <rect width="160" height="100" rx="8" fill="#040a17" stroke="#0284c7" stroke-width="1.2" />
+    <text x="14" y="26" fill="#7dd3fc" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">HARMONIZER</text>
+    <text x="14" y="48" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="13" font-weight="600">FX Rate Matrix</text>
+    <text x="14" y="68" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">CANONICAL EUR</text>
+    <text x="14" y="86" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9.5">10 Fiat Cross-Pairs</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- COLUMN 3: CORE RUNTIME ENGINE (CENTERPIECE)                  -->
+  <!-- ============================================================ -->
+  <g transform="translate(580, 120)">
+    <!-- Elevated Core Card -->
+    <rect width="260" height="180" rx="10" fill="#030a1c" stroke="url(#coreCardStroke)" stroke-width="1.5" />
     
-    <!-- Title -->
-    <text x="20" y="32" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.5">01 · MARKET INGESTION</text>
-    <line x1="20" y1="46" x2="242" y2="46" stroke="#0f172a" stroke-width="1"/>
+    <!-- Header -->
+    <text x="20" y="30" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" letter-spacing="1.5">CORE RUNTIME ENGINE</text>
+    <line x1="20" y1="42" x2="240" y2="42" stroke="#0c284d" stroke-width="1" />
 
-    <!-- Section A: Yahoo Finance -->
-    <g transform="translate(20, 68)">
-      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Yahoo Finance Connector</text>
-      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Equities, ETFs &amp; indices</text>
-      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">10s in-memory TTL caching</text>
+    <!-- Pillar 1: Solvency Gate -->
+    <g transform="translate(20, 64)">
+      <circle cx="4" cy="4" r="3" fill="#38bdf8" />
+      <text x="16" y="7" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="12" font-weight="600">Solvency Assertion Gate</text>
+      <text x="16" y="22" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">Zero-deficit balance verification</text>
     </g>
 
-    <!-- Section B: CoinGecko -->
-    <g transform="translate(20, 142)">
-      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">CoinGecko Connector</text>
-      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Cryptocurrency spot rates</text>
-      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">Sparklines &amp; capitalization</text>
+    <!-- Pillar 2: Cost Basis Accounting -->
+    <g transform="translate(20, 104)">
+      <circle cx="4" cy="4" r="3" fill="#38bdf8" />
+      <text x="16" y="7" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="12" font-weight="600">Weighted Average Cost</text>
+      <text x="16" y="22" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">Dynamic position adjustments</text>
     </g>
 
-    <!-- Section C: FX Harmonization -->
-    <g transform="translate(20, 216)">
-      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">FX Rate Normalization</text>
-      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Canonical EUR base anchor</text>
-      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">10-currency conversion matrix</text>
-    </g>
-  </g>
-
-  <!-- ============================================================ -->
-  <!-- COLUMN 2: CORE RUNTIME                                       -->
-  <!-- ============================================================ -->
-  <g transform="translate(370, 95)">
-    <!-- Column card (accented with subtle blue border) -->
-    <rect x="0" y="0" width="280" height="300" rx="8" fill="#040916" stroke="#0284c7" stroke-width="1.2"/>
-    
-    <!-- Title -->
-    <text x="20" y="32" fill="#7dd3fc" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.5">02 · CORE RUNTIME</text>
-    <line x1="20" y1="46" x2="260" y2="46" stroke="#0c2340" stroke-width="1"/>
-
-    <!-- Section A: Order Execution -->
-    <g transform="translate(20, 68)">
-      <text x="0" y="0" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Order Execution Pipeline</text>
-      <text x="0" y="18" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Market order settlement &amp; fills</text>
-      <text x="0" y="34" fill="#0284c7" font-family="monospace" font-size="10">Solvency check &amp; zero-deficit gate</text>
-    </g>
-
-    <!-- Section B: Fiscal Tax Auditor -->
-    <g transform="translate(20, 142)">
-      <text x="0" y="0" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Fiscal Tax Engine (11+ Regimes)</text>
-      <text x="0" y="18" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Spain IRPF tramos, Tobin, SDRT, TTF</text>
-      <text x="0" y="34" fill="#0284c7" font-family="monospace" font-size="10">Broker floors &amp; capital gains tax</text>
-    </g>
-
-    <!-- Section C: Position State -->
-    <g transform="translate(20, 216)">
-      <text x="0" y="0" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Portfolio &amp; Ledger State</text>
-      <text x="0" y="18" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Weighted average acquisition cost</text>
-      <text x="0" y="34" fill="#0284c7" font-family="monospace" font-size="10">Cash reserves &amp; immutable receipts</text>
+    <!-- Pillar 3: Order Lifecycle -->
+    <g transform="translate(20, 144)">
+      <circle cx="4" cy="4" r="3" fill="#38bdf8" />
+      <text x="16" y="7" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="12" font-weight="600">Settlement Coordinator</text>
+      <text x="16" y="22" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">Atomic receipts &amp; audit commit</text>
     </g>
   </g>
 
+  <!-- Attached Bottom Node: Fiscal Tax Auditor -->
+  <g transform="translate(580, 340)">
+    <rect width="260" height="88" rx="8" fill="#030712" stroke="url(#cardStroke)" stroke-width="1" />
+    <text x="18" y="24" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">STATUTORY FISCAL AUDITOR</text>
+    <text x="18" y="46" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="13" font-weight="600">11+ National Tax Regimes</text>
+    <text x="18" y="66" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="10">Spain IRPF / Tobin · SEC 31 · SDRT · TTF</text>
+    <circle cx="238" cy="22" r="3" fill="#38bdf8" />
+  </g>
+
   <!-- ============================================================ -->
-  <!-- COLUMN 3: OUTPUT & STORAGE                                   -->
+  <!-- COLUMN 4: PERSISTENCE & CLIENT RUNTIMES (RIGHT)              -->
   <!-- ============================================================ -->
-  <g transform="translate(710, 95)">
-    <!-- Column card -->
-    <rect x="0" y="0" width="242" height="300" rx="8" fill="#030712" stroke="#1e293b" stroke-width="1"/>
-    
-    <!-- Title -->
-    <text x="20" y="32" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.5">03 · PERSISTENCE &amp; API</text>
-    <line x1="20" y1="46" x2="222" y2="46" stroke="#0f172a" stroke-width="1"/>
+  <!-- Node A: Persistence Engine -->
+  <g transform="translate(940, 120)">
+    <rect width="212" height="80" rx="8" fill="#030712" stroke="url(#cardStroke)" stroke-width="1" />
+    <text x="16" y="26" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">PERSISTENCE LAYER</text>
+    <text x="16" y="48" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="14" font-weight="600">Atomic JSON &amp; SQLite</text>
+    <text x="16" y="66" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">Temp-swap I/O · ACID ledger</text>
+    <circle cx="192" cy="24" r="3" fill="#38bdf8" />
+  </g>
 
-    <!-- Section A: Storage Providers -->
-    <g transform="translate(20, 68)">
-      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Storage Providers</text>
-      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Atomic JSON (swap-and-rename)</text>
-      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">SQLite ACID relational ledger</text>
-    </g>
-
-    <!-- Section B: Quantitative Analytics -->
-    <g transform="translate(20, 142)">
-      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Quant Analytics</text>
-      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Sharpe ratio &amp; peak drawdown</text>
-      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">Win/loss &amp; profit factor audit</text>
-    </g>
-
-    <!-- Section C: Client Bindings -->
-    <g transform="translate(20, 216)">
-      <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600">Client Bindings</text>
-      <text x="0" y="18" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Python CLI &amp; Package</text>
-      <text x="0" y="34" fill="#475569" font-family="monospace" font-size="10">Headless Dart Core Library</text>
-    </g>
+  <!-- Node B: Host Language Drivers -->
+  <g transform="translate(940, 230)">
+    <rect width="212" height="80" rx="8" fill="#030712" stroke="url(#cardStroke)" stroke-width="1" />
+    <text x="16" y="26" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="1">POLYGLOT RUNTIMES</text>
+    <text x="16" y="48" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="14" font-weight="600">Pure Dart &amp; Python</text>
+    <text x="16" y="66" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10">Library APIs + Native CLIs</text>
+    <circle cx="192" cy="24" r="3" fill="#38bdf8" />
   </g>
 </svg>
